@@ -14,7 +14,21 @@ public:
     int findBottomLeftValue(TreeNode* root) 
     {
         queue<TreeNode*>q;
-        vector<int>v;
+        q.push(root);
+        while(!q.empty())
+        {
+            root=q.front();
+            q.pop();
+            if(root->right)
+            {
+                q.push(root->right);
+            }
+            if(root->left)
+            {
+                q.push(root->left);
+            }
+        }
+       /* vector<int>v;
         q.push(root);
         while(!q.empty())
         {
@@ -36,7 +50,7 @@ public:
                     q.push(node->right);
                 }
             }
-        }
-        return v[v.size()-1];
+        }*/
+        return root->val;
     }
 };
