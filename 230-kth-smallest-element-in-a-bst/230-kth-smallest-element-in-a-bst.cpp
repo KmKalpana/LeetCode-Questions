@@ -22,24 +22,10 @@ public:
           count=root->val;
         find(root->right,count,--k);
     }
-   /*   //vector Method.
-   void smallest(TreeNode* root, int k,vector<int>&v)
-    {
-         if(root)
-        {
-            smallest(root->left,k,v);
-             v.push_back(root->val);  
-             smallest(root->right,k,v);
-        }
-        
-    }*/
     int kthSmallest(TreeNode* root, int k) 
     {
         int count;
         find(root,count,k);
         return count;
-         // vector<int>v;
-       // smallest(root,k,v);
-             //  return v[k-1];
     }
 };
