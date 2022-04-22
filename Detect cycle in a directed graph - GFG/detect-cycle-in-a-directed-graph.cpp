@@ -5,41 +5,42 @@ using namespace std;
  // } Driver Code Ends
 class Solution {
   public:
-    bool detectcycle(int s, vector<int> adj[],vector<bool>&vis,vector<bool>&dfsvis)
+    // Function to detect cycle in a directed graph.
+    bool isCycle(int start, vector<int>adj[], vector<bool>&vis, vector<bool>&dfsvis)
     {
-        vis[s]=true;
-        dfsvis[s]=true;
-        for(auto it : adj[s])
+        vis[start]=true;
+        dfsvis[start]=true;
+        for(auto it: adj[start])
         {
             if(!vis[it])
             {
-        if(detectcycle(it,adj,vis,dfsvis))
-            return true;
+                if(isCycle(it,adj,vis,dfsvis))return true;
             }
             else if(dfsvis[it])
             {
-            return true;
+                return true;
+            }
         }
-        }
-        dfsvis[s]=0;
+        dfsvis[start]=false;
         return false;
     }
-    bool isCyclic(int V, vector<int> adj[])
-    {
-      vector<bool>vis(V+1,false);
-      vector<bool>dfsvis(V+1,false);
-      for(int i=0; i<V; i++)
-      {
-          if(!vis[i])
-          {
-            if(detectcycle(i,adj,vis,dfsvis))
-              return true;
-          }
-          
-      }
-      return false;
-      }
+    bool isCyclic(int V, vector<int> adj[]) {
+        vector<bool>vis(V+1,0);
+        vector<bool>dfsvis(V+1,0);
+        for(int i=0; i<V; i++)
+        {
+            if(vis[i]==false)
+            {
+                if(isCycle(i,adj,vis,dfsvis))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 };
+
 // { Driver Code Starts.
 
 int main() {
