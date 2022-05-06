@@ -20,7 +20,7 @@ public:
                  if(sum==0)
                 {
                     res.push_back({nums[i],nums[j],nums[k]});
-                    while(j<k && nums[j]==nums[j+1])
+                   while(j<k && nums[j]==nums[j+1])
                     {
                         j++;
                     }
@@ -28,6 +28,7 @@ public:
                     {
                         k--;
                     }
+                    
                     j++,k--;
                 }
                 else if(sum>0)
