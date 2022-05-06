@@ -20,13 +20,14 @@ public:
         int y=find(it[1],parent);
         if(x==y)
         {
-           ans=it; 
+           return {it[0],it[1]}; 
         }
         else 
         {
             parent[y]=x;
         }
     }
-        return ans; 
+       // return ans; 
+        return {};
     }
 };
