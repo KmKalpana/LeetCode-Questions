@@ -38,8 +38,8 @@ public:
             {
                 if(grid[i][j]=='1')
                 {
+                    ans++;
                  helper(grid,m,n,i,j);
-                  ans++;
                 }
              }
         }
