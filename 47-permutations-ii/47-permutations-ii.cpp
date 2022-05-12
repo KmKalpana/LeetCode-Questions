@@ -1,30 +1,24 @@
 class Solution {
 public:
-    void helper(vector<int>v, set<vector<int>>&ans, vector<int>&nums, int index)
+    void helper(vector<vector<int>>&ans, vector<int>nums, int index)
     {
-        if(index==v.size())
+        if(index==nums.size())
         {
-            ans.insert(v);
+            ans.push_back(nums);
         }
         for(int i=index; i<nums.size(); i++)
         {
-            swap(v[index],v[i]);
-            helper(v,ans,nums,index+1);
+            if(i!=index && nums[i]==nums[index])
+                continue;
+            swap(nums[index],nums[i]);
+            helper(ans,nums,index+1);
         }
     }
     vector<vector<int>> permuteUnique(vector<int>& nums) {
-        set<vector<int>>res;
-        vector<int>v;
-        for(auto it: nums)
-        {
-            v.push_back(it);
-        }
-        helper(v,res,nums,0);
-        vector<vector<int>>ans;
-        for(auto it: res)
-        {
-            ans.push_back(it);
-        }
+        
+        sort(nums.begin(),nums.end());
+        vector<vector<int>>ans;       
+        helper(ans,nums,0);
         return ans;
     }
 };
