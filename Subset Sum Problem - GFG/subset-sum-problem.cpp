@@ -9,7 +9,7 @@ using namespace std;
 
 class Solution{   
 public:
-bool helper(int index, int target, vector<int>&arr, vector<vector<int>>&dp)
+/*bool helper(int index, int target, vector<int>&arr, vector<vector<int>>&dp)
 {
     if(target==0)
         return true;
@@ -26,11 +26,32 @@ bool helper(int index, int target, vector<int>&arr, vector<vector<int>>&dp)
         take=helper(index-1,target-arr[index],arr,dp);
     }
     return dp[index][target]= not_take || take;
-}
+}*/ 
     bool isSubsetSum(vector<int>arr, int k){
         int n=arr.size();
-         vector<vector<int>>dp(n+1,vector<int>(k+1,-1));
-       return helper(n-1,k,arr,dp);
+         //vector<vector<int>>dp(n+1,vector<int>(k+1,-1));
+       //return helper(n-1,k,arr,dp);
+        vector<vector<bool>>dp(n,vector<bool>(k+1,0));
+       for(int i=0; i<n; i++)
+       {
+           dp[i][0]=true;
+       }
+       dp[0][arr[0]]=true;
+       for(int ind=1; ind<n; ind++)
+       {
+           for(int target=1; target<=k; target++)
+           {
+               bool notTake=dp[ind-1][target];
+               bool take=false;
+               if(arr[ind]<=target)
+               {
+                   take=dp[ind-1][target-arr[ind]];
+               }
+               dp[ind][target]=take|notTake;
+           }
+       }
+    
+    return dp[n-1][k];
     }
 };
 
