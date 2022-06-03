@@ -17,9 +17,10 @@ public:
     int lengthOfLIS(vector<int>& nums) 
     {
      int n=nums.size();
-      //vector<vector<int>>dp(n,vector<int>(n+1,0));
-       //int ans= helper(0,-1,n,nums,dp);
-        int ans=1;
+      vector<vector<int>>dp(n,vector<int>(n+1,-1));
+       int ans= helper(0,-1,n,nums,dp);
+        return ans;
+       /* int ans=1;
         vector<int>dp(n,1);
         for(int i=0; i<n; i++)
         {
@@ -32,10 +33,6 @@ public:
                 }
             }
         }
-        for(int i=0; i<n; i++)
-        {
-            cout<<dp[i]<<" ";
-        }
-        return ans;
+        return ans;*/
     }
 };
