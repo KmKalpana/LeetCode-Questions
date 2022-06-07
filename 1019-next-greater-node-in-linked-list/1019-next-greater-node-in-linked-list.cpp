@@ -10,8 +10,7 @@
  */
 class Solution {
 public:
-    vector<int> nextLargerNodes(ListNode* head) {
-        vector<int>ans;
+    /*  vector<int>ans;
         ListNode* temp=head;
         int counter=0;
         while(head)
@@ -34,6 +33,21 @@ public:
             head=head->next;
         }
     //ans.push_back(0);
-        return ans;
+        return ans;*/
+    vector<int> nextLargerNodes(ListNode* head) 
+    {
+       vector<int>res, stack;
+        for(auto it=head; it!=nullptr; it=it->next)
+        {
+            res.push_back(it->val);
+        }
+        for(int i=res.size()-1; i>=0; i--)
+        {
+            auto val=res[i];
+            while(!stack.empty() && res[i]>=stack.back()) stack.pop_back();
+            res[i]=stack.empty()?0:stack.back();
+            stack.push_back(val);
+        }
+            return res;
     }
 };
