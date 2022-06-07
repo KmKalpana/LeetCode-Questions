@@ -9,7 +9,7 @@ public:
             {
             for(int j=0; j<n; j++)
             {
-                if(arr[j]*2==arr[i] && i!=j)
+                if((arr[j]*2==arr[i] || arr[i]*2==arr[j]) && i!=j)
                 {
                     return true;
                 }
