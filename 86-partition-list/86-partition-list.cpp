@@ -12,7 +12,7 @@ class Solution {
 public:
     ListNode* partition(ListNode* head, int x)
     {
-      ListNode* ans= new ListNode(0);
+     /* ListNode* ans= new ListNode(0);
       ListNode* temp=ans;
       ListNode* append= new ListNode(0);
       ListNode* temp2=append;
@@ -31,6 +31,18 @@ public:
            head=head->next;
        }
        temp->next=append->next;
-         return ans->next;
+         return ans->next;*/
+        ListNode left(0), right(0);
+        ListNode *l= &left, *r= &right;
+        while(head)
+        {
+            ListNode* & ref= head->val<x ? l : r;
+            ref->next=head;
+            ref=ref->next;
+            head=head->next;
+        }
+        l->next=right.next;
+        r->next=NULL;
+        return left.next;
     }
 };
