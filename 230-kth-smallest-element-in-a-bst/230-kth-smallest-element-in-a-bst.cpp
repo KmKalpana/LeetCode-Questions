@@ -11,21 +11,16 @@
  */
 class Solution {
 public:
-    void find(TreeNode* root, int &count , int &k)
+    int find(TreeNode* root,int &k)
     {
         if(!root)
-            return;
-        find(root->left,count,k);
-          if(k==0)
-          { return;
-          }
-          count=root->val;
-        find(root->right,count,--k);
+            return -1;
+        int x=find(root->left,k);
+        return !k?x: !--k?root->val : find(root->right,k);
     }
     int kthSmallest(TreeNode* root, int k) 
     {
-        int count;
-        find(root,count,k);
-        return count;
+        int counter=0;
+        return find(root,k);
     }
 };
