@@ -12,7 +12,7 @@ public:
         for(auto it: mp)
         {
             pq.push(it.second);
-            while(pq.size()>k)
+            if(pq.size()>k)
             {
                 pq.pop();
             }
