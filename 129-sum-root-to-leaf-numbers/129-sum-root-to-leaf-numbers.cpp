@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    int sum=0,res=0;
+ /*   int sum=0,res=0;
     void add(TreeNode* root)
     {
       if(root==nullptr)  return;
@@ -26,10 +26,23 @@ public:
         res=res/10;
         
     }
-    
+    */
+     int sum(TreeNode* root,int num, int add)
+ {
+     if(root==NULL)
+     return 0;
+     num=num*10+root->val;
+     if(root->left==NULL && root->right==NULL)
+     {
+         //add=num;
+         //return add;
+         return num;
+     }
+     return sum(root->left,num,add)+sum(root->right,num,add);
+ }
     int sumNumbers(TreeNode* root) 
     {
-         add(root);
-        return sum;
+         return sum(root,0,0);
+        //return sum;
     }
 };
