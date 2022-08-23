@@ -7,9 +7,10 @@ public:
     int edgeScore(vector<int>& edges) 
     {
        int ans=0;
-        unordered_map<long long ,vector<long long >>mp;
+      //  unordered_map<long long ,vector<long long >>mp;
         long long total=INT_MIN;
-        for(int i=0; i<edges.size(); i++)
+        int n=edges.size();
+      /*  for(int i=0; i<edges.size(); i++)
         {
             mp[edges[i]].push_back(i);
         }
@@ -20,10 +21,8 @@ public:
             {
               sum+=j;   
             }
-          // cout<<sum<<" ";
             if(total<=sum)
             {
-               // cout<<it.first<<" ";
                 if(total==sum)
                 {
                  ans=min(ans,it.first);
@@ -33,6 +32,19 @@ public:
                  total=sum;
                 ans=it.first;
                 }
+            }
+        }*/
+        vector<long long>scores(n);
+        for(int i=0; i<n; i++)
+        {
+            scores[edges[i]]+=i;
+        }
+        for(int i=0; i<scores.size(); i++)
+        {
+            if(total<scores[i])
+            {
+                total=scores[i];
+                ans=i;
             }
         }
         return ans;
