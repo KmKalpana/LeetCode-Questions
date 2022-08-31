@@ -13,9 +13,9 @@ public:
         
        // return helper(grid,i+1,j) and helper(grid,i-1,j+1) and helper(grid,i,j+1) and helper(grid,i,j-1);
              bool d1=helper(grid,i+1,j); 
-               bool d2=helper(grid,i-1,j);
+               bool d2=helper(grid,i,j-1);
                bool d3=helper(grid,i,j+1);
-               bool d4=helper(grid,i,j-1);
+               bool d4=helper(grid,i-1,j);
              return d1 && d2 && d3 && d4; 
     }
     int closedIsland(vector<vector<int>>& grid) 
