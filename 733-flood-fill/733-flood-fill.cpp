@@ -8,24 +8,25 @@ public:
     }
     void helper(vector<vector<int>>& image,int sr, int sc, int key, int newColor, int row, int column)
     {
-      
+      if(sr<0 || sc<0 || sr>=row || sc>=column || image[sr][sc]!=key)
+          return ;
         image[sr][sc]=newColor;
-        if(isValid(image,sr+1,sc,key,row,column))   
-        {
+     //   if(isValid(image,sr+1,sc,key,row,column))   
+       // {
             helper(image,sr+1,sc,key,newColor,row,column);
-        }
-          if(isValid(image,sr-1,sc,key,row,column))   
-        {
+       // }
+       //   if(isValid(image,sr-1,sc,key,row,column))   
+        //{
             helper(image,sr-1,sc,key,newColor,row,column);
-        } 
-        if(isValid(image,sr,sc+1,key,row,column))   
-        {
+       // } 
+       // if(isValid(image,sr,sc+1,key,row,column))   
+       // {
             helper(image,sr,sc+1,key,newColor,row,column);
-        }
-         if(isValid(image,sr,sc-1,key,row,column))   
-        {
+      //  }
+        // if(isValid(image,sr,sc-1,key,row,column))   
+       // {
             helper(image,sr,sc-1,key,newColor,row,column);
-        }
+       // }
     }
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) 
     {
@@ -35,13 +36,7 @@ public:
           int n=image[0].size();
         vector<vector<int>> ans(m);
           int key=image[sr][sc];
-       // for(int i=0; i<m; i++)
-        //{
-            //for(int j=0; j<n; j++)
-           // {
-                helper(image,sr,sc,key,newColor,m,n);
-           // }
-      //  }
+         helper(image,sr,sc,key,newColor,m,n);
         return image;
     }
 };
