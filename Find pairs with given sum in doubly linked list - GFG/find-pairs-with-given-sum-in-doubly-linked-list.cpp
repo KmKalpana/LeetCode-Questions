@@ -34,20 +34,49 @@ class Solution
 {
 public:
 vector<pair<int,int>>ans;
-
-    vector<pair<int, int>> findPairsWithGivenSum(Node *head, int target)
-    { 
-        unordered_map<int,int>mp;
-        while(head!=NULL)
+    
+    Node* findLastNode(Node* head)
+    {
+        Node* prev;
+        while(head)
         {
-            if(mp.find(target-head->data)!=mp.end())
-            {
-                ans.push_back({target-head->data,head->data});
-            }
-            mp[head->data]++;
+            prev=head;
             head=head->next;
         }
-        sort(ans.begin(),ans.end());
+        return prev;
+    }
+    vector<pair<int, int>> findPairsWithGivenSum(Node *head, int target)
+    { 
+        //unordered_map<int,int>mp;
+       Node* last=findLastNode(head);
+    //  //  cout<<last->data<<endl;
+    //   while(head!=NULL)
+    //     {
+    //         if(mp.find(target-head->data)!=mp.end())
+    //         {
+    //             ans.push_back({target-head->data,head->data});
+    //         }
+    //         mp[head->data]++;
+    //         head=head->next;
+    //     }
+    //     sort(ans.begin(),ans.end());
+    while(head!=last && head!=NULL && last!=NULL)
+    {
+        if(head->data+last->data==target && head->data<last->data)
+        {
+            ans.push_back({head->data,last->data});
+            head=head->next;
+            last=last->prev;
+        }
+        else if(head->data+last->data<target)
+        {
+            head=head->next;
+        }
+        else
+        {
+            last=last->prev;
+        }
+    }
         return ans;
     }
 };
