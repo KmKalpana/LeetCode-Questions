@@ -14,8 +14,7 @@ public:
         int num=nums[start];
        // cout<<num<<" ";
         temp.push_back(num);
-         ++start;
-        helper(nums,start,end,target-num,temp);
+        helper(nums,start+1,end,target-num,temp);
         temp.pop_back();   
         while(start<end && nums[start]==num) ++start ;
         helper(nums,start,end,target,temp);
