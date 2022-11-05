@@ -25,7 +25,7 @@ class Solution
                  if(r==1) return true;
                  else return false;
              }
-             n/=2;
+             n=n>>1;
            }
            return false;
     }
