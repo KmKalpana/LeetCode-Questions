@@ -15,7 +15,7 @@ class Solution
 {   
     vector<string>ans;
     public:
-    void helper(string &temp, int open, int close)
+    void helper(string temp, int open, int close)
     {
         if(open==0 && close==0)
           {
