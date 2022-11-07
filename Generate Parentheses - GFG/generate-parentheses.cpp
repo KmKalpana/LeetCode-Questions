@@ -15,28 +15,22 @@ class Solution
 {   
     vector<string>ans;
     public:
-    void helper(string temp, int open, int close)
+    void helper(string st, int open, int close)
     {
         if(open==0 && close==0)
-          {
-              ans.push_back(temp);
-              return;
-          }
-        if(open>0)
-        {
-            temp.push_back('(');
-            helper(temp,open-1,close);
-            temp.pop_back();
-        }
-               if(close>0)
-            {
-                if(open<close)
-                {
-                temp.push_back(')');
-                helper(temp,open,close-1);
-                temp.pop_back();
-                }
-            }
+     {
+      //  cout<<st<<" ";
+        ans.push_back(st);
+        return ;
+     }
+     if(open>0)
+     {
+        helper(st+"(",open-1,close);
+     }
+     
+         if(open<close)
+            helper(st+=')',open,close-1);
+
     }
     vector<string> AllParenthesis(int n) 
     {
