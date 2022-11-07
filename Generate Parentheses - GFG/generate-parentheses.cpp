@@ -29,7 +29,10 @@ class Solution
      }
      
          if(open<close)
+         {
             helper(st+=')',open,close-1);
+            st.pop_back();
+         }
 
     }
     vector<string> AllParenthesis(int n) 
