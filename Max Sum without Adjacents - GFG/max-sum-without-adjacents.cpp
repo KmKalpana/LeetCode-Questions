@@ -22,8 +22,22 @@ public:
 	}
 	int findMaxSum(int *arr, int n) 
 	{
-	   vector<int>dp(n+1,-1);   
-	   return helper(arr,n-1,dp);
+	   vector<int>dp(n,-1);   
+	  // return helper(arr,n-1,dp);
+	  int prev=arr[0];
+	  int prev2;
+	  for(int i=1; i<n; i++)
+	  {
+	   // int not_pic=dp[i-1];
+	   int not_pic=prev;
+	    int pic=arr[i];
+	    if(i-2>=0)   pic+=prev2;
+	      // pic+=dp[i-2];
+	     int cur=max(not_pic,pic);
+	     prev2=prev;
+	     prev=cur;
+	  }
+	  return prev;
 	}
 };
 
