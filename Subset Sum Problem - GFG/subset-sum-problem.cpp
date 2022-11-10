@@ -9,15 +9,13 @@ using namespace std;
 
 class Solution{   
 public:
-/*bool helper(int index, int target, vector<int>&arr, vector<vector<int>>&dp)
+bool helper(int index, int target, vector<int>&arr, vector<vector<bool>>&dp)
 {
     if(target==0)
         return true;
-    if(index<0)
-        return false;
-    //if(index==0)
-        //return (arr[0]==target);
-    if(dp[index][target]!= -1)
+    if(index==0)
+        return arr[0]==target;
+    if(dp[index][target]!=-1)
         return dp[index][target];
     bool not_take=helper(index-1,target,arr,dp);
     bool take=false;
@@ -25,33 +23,38 @@ public:
     {
         take=helper(index-1,target-arr[index],arr,dp);
     }
-    return dp[index][target]= not_take || take;
-}*/ 
+    return dp[index][target]=not_take || take;
+}
     bool isSubsetSum(vector<int>arr, int k){
         int n=arr.size();
-         //vector<vector<int>>dp(n+1,vector<int>(k+1,-1));
-       //return helper(n-1,k,arr,dp);
-        vector<vector<bool>>dp(n,vector<bool>(k+1,0));
-       for(int i=0; i<n; i++)
+          vector<vector<bool>>dp(n+1,vector<bool>(k+1,0));
+     // return helper(n-1,k,arr,dp);
+       for(int i=0; i<=n; i++)
+        {
+            dp[i][0]=true;
+        }
+         for(int j=1; j<=k; j++)
+         {
+             dp[0][j]=false;
+         }
+      // dp[0][arr[0]]=true;
+       for(int i=1; i<=n; i++)
        {
-           dp[i][0]=true;
-       }
-       dp[0][arr[0]]=true;
-       for(int ind=1; ind<n; ind++)
-       {
-           for(int target=1; target<=k; target++)
+           for(int j=1; j<=k; j++)
            {
-               bool notTake=dp[ind-1][target];
-               bool take=false;
-               if(arr[ind]<=target)
+               if(arr[i-1]<=j)
                {
-                   take=dp[ind-1][target-arr[ind]];
+                  bool not_take=dp[i-1][j];
+                  bool take=dp[i-1][j-arr[i-1]];
+                  dp[i][j]=not_take || take;
                }
-               dp[ind][target]=take|notTake;
+               else
+               {
+                   dp[i][j]=dp[i-1][j];
+               }
            }
        }
-    
-    return dp[n-1][k];
+      return dp[n][k];
     }
 };
 
