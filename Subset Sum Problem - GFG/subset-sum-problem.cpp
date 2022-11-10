@@ -33,10 +33,10 @@ bool helper(int index, int target, vector<int>&arr, vector<vector<bool>>&dp)
         {
             dp[i][0]=true;
         }
-         for(int j=1; j<=k; j++)
-         {
-             dp[0][j]=false;
-         }
+        //  for(int j=1; j<=k; j++)
+        //  {
+        //      dp[0][j]=false;
+        //  }
       // dp[0][arr[0]]=true;
        for(int i=1; i<=n; i++)
        {
