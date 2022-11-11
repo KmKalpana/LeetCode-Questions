@@ -19,6 +19,12 @@ public:
                 }
             }
         }
+        // for(int i=0; i<=n; i++)
+        // {
+        //     for(int j=0; j<=m; j++)
+        //         cout<<dp[i][j]<<" ";
+        //     cout<<endl;
+        // }
         int i=n, j=m; 
         string ans="";
         while(i>0 && j>0)
@@ -39,16 +45,17 @@ public:
                 j--;
             }
         }
-         while(j>0)
-        {
-            ans+=str2[j-1];
-            j--;
-        }
         while(i>0)
         {
             ans+=str1[i-1];
             i--;
         }
+         while(j>0)
+        {
+            ans+=str2[j-1];
+            j--;
+        }
+        
        
         reverse(ans.begin(),ans.end());
         return ans;
