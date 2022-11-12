@@ -22,7 +22,8 @@ public:
         string res;
           for(auto it : st)
           {
-              res.append(it.second,it.first);
+              //res.append(it.second,it.first);
+              res+=it.first;
           }
         return res;
     }
