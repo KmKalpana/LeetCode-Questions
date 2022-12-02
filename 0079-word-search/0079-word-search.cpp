@@ -6,9 +6,11 @@ public:
                 return true;
          if(r<0|| c<0 || r>=board.size() || c>=board[0].size() || word[ind]!=board[r][c] || vis[r][c]==1)
            return false;
-              board[r][c]='1';
+            //  board[r][c]='1';
+           vis[r][c]=1;
          bool check= dfs(r+1,c,board,vis,ind+1,word) || dfs(r-1,c,board,vis,ind+1,word) || dfs(r,c+1,board,vis,ind+1,word) ||dfs(r,c-1,board,vis,ind+1,word);
-           board[r][c]=word[ind];
+          // board[r][c]=word[ind];
+           vis[r][c]=0;
            return check;
        }
    //   }
