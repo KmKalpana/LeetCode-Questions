@@ -18,7 +18,7 @@ class Solution
         for(int i=0; i<n; i++)
         {
             int temp=arr[i]%k;
-            if(mp.find(k-temp)!=mp.end())
+            if(mp.find(abs(k-temp)!=mp.end())
             {
               ans+=mp[k-temp];
             }
